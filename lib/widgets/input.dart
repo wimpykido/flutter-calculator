@@ -1,5 +1,4 @@
 import 'package:calculator/logic/calculator_bloc.dart';
-import 'package:calculator/logic/calculator_event.dart';
 import 'package:calculator/logic/calculator_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
