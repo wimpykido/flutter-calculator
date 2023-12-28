@@ -1,4 +1,6 @@
-abstract class CalculatorEvent {}
+abstract class CalculatorEvent {
+  List<Object?> get props => [];
+}
 
 class AddEvent extends CalculatorEvent {
   final double operand;
@@ -16,13 +18,21 @@ class InputChangedEvent extends CalculatorEvent {
 }
 
 class ClearEvent extends CalculatorEvent {}
+
 class BackspaceEvent extends CalculatorEvent {}
+
 class PercentageEvent extends CalculatorEvent {}
+
 class AdditionEvent extends CalculatorEvent {}
+
 class SubtractionEvent extends CalculatorEvent {}
+
 class MultiplicationEvent extends CalculatorEvent {}
+
 class DivisionEvent extends CalculatorEvent {}
+
 class EqualEvent extends CalculatorEvent {}
+
 class DecimalEvent extends CalculatorEvent {}
 
 class NumberPressedEvent extends CalculatorEvent {
