@@ -13,6 +13,7 @@ class CalculatorBloc extends Bloc<CalculatorEvent, CalculatorState> {
     on<PercentageEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
     on<EqualEvent>((event, emit) => emit(_mapEqualPressedToState()));
     on<ClearEvent>((event, emit) => emit(CalculatorInitialState()));
+    on<BackspaceEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
     on<DecimalEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
   }
 
@@ -41,6 +42,9 @@ class CalculatorBloc extends Bloc<CalculatorEvent, CalculatorState> {
         return CalculatorResultState('${currentState.result}%');
       } else if (event is DecimalEvent) {
         return CalculatorResultState('${currentState.result}.');
+      } else if (event is BackspaceEvent) {
+        final String result = currentState.result.substring(0, currentState.result.length - 1);
+        return CalculatorResultState(result);
       }
     }
     return currentState;
