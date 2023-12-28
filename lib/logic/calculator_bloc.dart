@@ -5,28 +5,20 @@ import 'package:math_expressions/math_expressions.dart';
 
 class CalculatorBloc extends Bloc<CalculatorEvent, CalculatorState> {
   CalculatorBloc() : super(CalculatorInitialState()) {
-    on<NumberPressedEvent>(
-        (event, emit) => emit(_mapNumberPressedToState(event)));
-    on<AdditionEvent>(
-        (event, emit) => emit(_mapOperationPressedToState(event)));
-    on<SubtractionEvent>(
-        (event, emit) => emit(_mapOperationPressedToState(event)));
-    on<MultiplicationEvent>(
-        (event, emit) => emit(_mapOperationPressedToState(event)));
-    on<DivisionEvent>(
-        (event, emit) => emit(_mapOperationPressedToState(event)));
-    on<PercentageEvent>(
-        (event, emit) => emit(_mapOperationPressedToState(event)));
+    on<NumberPressedEvent>((event, emit) => emit(_mapNumberPressedToState(event)));
+    on<AdditionEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
+    on<SubtractionEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
+    on<MultiplicationEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
+    on<DivisionEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
+    on<PercentageEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
     on<EqualEvent>((event, emit) => emit(_mapEqualPressedToState()));
-    on<ClearEvent>(
-        (event, emit) => emit(CalculatorInitialState() as CalculatorState));
+    on<ClearEvent>((event, emit) => emit(CalculatorInitialState()));
     on<DecimalEvent>((event, emit) => emit(_mapOperationPressedToState(event)));
   }
 
   CalculatorState _mapNumberPressedToState(NumberPressedEvent event) {
     final currentState = state;
-    if (currentState is CalculatorInitialState ||
-        currentState is CalculatorErrorState) {
+    if (currentState is CalculatorInitialState || currentState is CalculatorErrorState) {
       return CalculatorResultState(event.number);
     } else if (currentState is CalculatorResultState) {
       return CalculatorResultState(currentState.result + event.number);
@@ -63,8 +55,7 @@ class CalculatorBloc extends Bloc<CalculatorEvent, CalculatorState> {
         ContextModel cm = ContextModel();
         double eval = exp.evaluate(EvaluationType.REAL, cm);
 
-        return CalculatorResultState(
-            (eval % 1 == 0) ? eval.toInt().toString() : eval.toString());
+        return CalculatorResultState((eval % 1 == 0) ? eval.toInt().toString() : eval.toString());
       } catch (e) {
         return const CalculatorErrorState('Error');
       }
