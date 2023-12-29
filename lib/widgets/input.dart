@@ -1,5 +1,4 @@
 import 'package:calculator/logic/calculator_bloc.dart';
-import 'package:calculator/logic/calculator_event.dart';
 import 'package:calculator/logic/calculator_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +22,6 @@ class CalculatorInput extends StatelessWidget {
               // Display default "zero" for initial state
               displayText = '0';
             }
-
             return Text(
               displayText,
               style: const TextStyle(fontSize: 24),

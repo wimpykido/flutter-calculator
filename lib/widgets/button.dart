@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CalculatorButton extends StatelessWidget {
-  const CalculatorButton(
-      {super.key,
-      this.title,
-      this.onPressed,
-      this.color = const Color(0xFF2D2F38),
-      this.isOperator = false,
-      this.icon});
+  const CalculatorButton({
+    super.key,
+    this.title,
+    this.onPressed,
+    Color? color,
+    this.isOperator = false,
+    this.icon,
+  }) : color = color ?? const Color(0xFF2D2F38);
+
   final String? title;
   final VoidCallback? onPressed;
   final Color? color;
@@ -19,9 +21,7 @@ class CalculatorButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.resolveWith(
-          (states) => color,
-        ),
+        backgroundColor: MaterialStateProperty.resolveWith((states) => color),
         shape: MaterialStateProperty.resolveWith(
           (states) => const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(24)),
