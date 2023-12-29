@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -14,25 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: BlocProvider(
         create: (context) => CalculatorBloc(),
-        child: const CalculatorScreen(),
+        child: CalculatorScreen(),
       ),
     );
   }
 }
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'calculator',
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF17171C)),
-//         useMaterial3: true,
-//       ),
-//       home: BlocProvider(
-//         create: (context) => CalculatorBloc(),
-//         child: CalculatorScreen(),
-//       ),
-//     );
-//   }
-// }

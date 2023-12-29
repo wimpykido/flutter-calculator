@@ -22,7 +22,6 @@ class CalculatorInput extends StatelessWidget {
               // Display default "zero" for initial state
               displayText = '0';
             }
-
             return Text(
               displayText,
               style: const TextStyle(fontSize: 24),
